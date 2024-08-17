@@ -1,0 +1,20 @@
+﻿@model Kyrsova.Models.User
+@{
+    ViewData["Title"] = "Головна сторінка";
+}
+
+@if (User.Identity != null && User.Identity.IsAuthenticated)
+{
+    <p>Ласкаво просимо, @User.Identity.Name</p>
+}
+
+<p>Вы успешно вошли в систему. Теперь вы можете использовать все доступные функции сайта.</p>
+
+<div>
+    <h3>Ваши действия</h3>
+    <ul>
+        <li><a href="/Events/Create">Создать новое событие</a></li>
+        <li><a href="/Events">Просмотреть все события</a></li>
+        <li><a href="/Account/Manage">Управление учетной записью</a></li>
+    </ul>
+</div>
