@@ -64,10 +64,13 @@ namespace Kyrsova.Controllers
                 _context.SaveChanges();
 
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.FirstName),  
-                
-            };
+                {
+                     new Claim(ClaimTypes.Name, user.FirstName),
+                     new Claim(ClaimTypes.HomePhone, user.PhoneNumber),
+                     new Claim(ClaimTypes.Surname, user.LastName),
+                     new Claim(ClaimTypes.Email, user.Email)
+
+                };
 
                 var identity = new ClaimsIdentity(claims, "login");
                 var principal = new ClaimsPrincipal(identity);
@@ -125,9 +128,12 @@ namespace Kyrsova.Controllers
             if (VerifyPassword(model.Password, user.Password))
             {
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.Email)
-        };
+                {
+                     new Claim(ClaimTypes.Name, user.FirstName),
+                     new Claim(ClaimTypes.HomePhone, user.PhoneNumber),
+                     new Claim(ClaimTypes.Surname, user.LastName),
+                     new Claim(ClaimTypes.Email, user.Email)
+                };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);

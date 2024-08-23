@@ -2,8 +2,68 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
 
-    <h1 class="display-4">Ласкаво просимо!</h1>
-    <h4 class="display-7">Просимо пройти авторизацію для помвного функціоналу сайту</h4>
-</div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/css/bootstrap.min.css" />
+
+    <style>
+        .hero {
+            background: url('/images/background.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .btn-custom {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 0.25rem;
+        }
+
+        .btn-primary-custom {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary-custom:hover {
+                background-color: #0056b3;
+                border-color: #004085;
+            }
+
+        .btn-secondary-custom {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+            .btn-secondary-custom:hover {
+                background-color: #5a6268;
+                border-color: #545b62;
+            }
+
+        .container {
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1 class="display-4">Ласкаво просимо!</h1>
+            <p class="lead mb-4">Просимо пройти авторизацію для повного функціоналу сайту</p>
+            <a href="/Home/Registrate" class="btn btn-primary btn-custom btn-primary-custom">Реєстрація</a>
+            <a href="/Home/Login" class="btn btn-secondary btn-custom btn-secondary-custom">Вхід</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

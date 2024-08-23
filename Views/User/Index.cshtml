@@ -3,18 +3,41 @@
     ViewData["Title"] = "Головна сторінка";
 }
 
-@if (User.Identity != null && User.Identity.IsAuthenticated)
-{
-    <p>Ласкаво просимо, @User.Identity.Name</p>
-}
+    <div class="container mt-5">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <h2 class="display-4">Ласкаво просимо, @User.Identity?.Name!</h2>
+                }
+                else
+                {
+                    <h2 class="display-4">Ласкаво просимо</h2>
+                }
+                <p class="lead">Раді вітати вас на нашому сайті. Організовуйте події та долучайтесь до існуючих.</p>
+            </div>
+        </div>
 
-<p>Вы успешно вошли в систему. Теперь вы можете использовать все доступные функции сайта.</p>
-
-<div>
-    <h3>Ваши действия</h3>
-    <ul>
-        <li><a href="/Events/Create">Создать новое событие</a></li>
-        <li><a href="/Events">Просмотреть все события</a></li>
-        <li><a href="/Account/Manage">Управление учетной записью</a></li>
-    </ul>
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6 mb-4">
+            <div class="card shadow-sm border-0 rounded-lg">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-calendar-plus display-1 text-primary mb-3"></i>
+                    <h5 class="card-title">Створити подію</h5>
+                    <p class="card-text">Організуйте свою власну подію та залучайте учасників.</p>
+                    <a href="@Url.Action("Create", "Event")" class="btn btn-primary btn-block mt-3">Створити подію</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-6 mb-4">
+            <div class="card shadow-sm border-0 rounded-lg">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-list-ul display-1 text-success mb-3"></i>
+                    <h5 class="card-title">Переглянути події</h5>
+                    <p class="card-text">Ознайомтесь з доступними подіями та долучайтесь до них.</p>
+                    <a href="@Url.Action("Index", "Event")" class="btn btn-success btn-block mt-3">Переглянути події</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

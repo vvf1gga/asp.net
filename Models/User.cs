@@ -6,16 +6,16 @@ namespace Kyrsova.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Email обязателен.")]
+        [Required(ErrorMessage = "Email обов'язковий до заповнення")]
         [EmailAddress(ErrorMessage = "Некорректный формат Email.")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Имя обязательно.")]
-        [MinLength(1, ErrorMessage = "Имя должно содержать хотя бы 1 символ.")]
+        [Required(ErrorMessage = "Ім'я обов'язкове до заповнення")]
+        [MaxLength(15, ErrorMessage = "Ім'я неповинно мати більше за 15 символів!")]
         public string FirstName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Фамилия обязательна.")]
-        [MinLength(1, ErrorMessage = "Фамилия должна содержать хотя бы 1 символ.")]
+        [Required(ErrorMessage = "Призвище обов'язкове до заповнення")]
+        [MaxLength(15, ErrorMessage = "Призвище неповинно мати більше за 15 символів!")]
         public string LastName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Телефон обязателен.")]
@@ -24,11 +24,13 @@ namespace Kyrsova.Models
 
         [Required(ErrorMessage = "Пароль обязателен.")]
         [DataType(DataType.Password)]
+        [MaxLength(21, ErrorMessage = "Пароль не може бути довший за 20 символів.")]
+        [MinLength(8, ErrorMessage = "Заннадто короткий пароль!")]
         public string Password { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Подтверждение пароля обязательно.")]
+        [Required(ErrorMessage = "Це поле обов'язкове до заповнення")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
+        [Compare("Password", ErrorMessage = "Паролі не співпадають.")]
         public string ConfirmPassword { get; set; } = string.Empty;
     }
 

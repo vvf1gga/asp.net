@@ -6,14 +6,14 @@ namespace Kyrsova.Models
 {
     public class Event
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
 
-        [Required(ErrorMessage = "Название события обязательно.")]
-        [MinLength(1, ErrorMessage = "Название события должно содержать хотя бы 1 символ.")]
-        public string EventName { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Назва обов'язкова для заповнення!")]
+        [MaxLength(31, ErrorMessage = "Навзва не повинна перебільшувати 30 символів.")]
+        public string Title { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Описание события обязательно.")]
-        [MinLength(1, ErrorMessage = "Описание события должно содержать хотя бы 1 символ.")]
+        [MaxLength(101, ErrorMessage = "Опис не повинен перебільшувати 100 символів.")]
         public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Дата и время начала обязательны.")]
@@ -25,13 +25,19 @@ namespace Kyrsova.Models
         [DataType(DataType.DateTime)]
         [FutureDate(ErrorMessage = "Дата и время завершения должны быть после начала.")]
         public DateTime EndDateTime { get; set; }
-
-        [Required(ErrorMessage = "Место обязательно.")]
-        [MinLength(1, ErrorMessage = "Место должно содержать хотя бы 1 символ.")]
-        public string Location { get; set; } = string.Empty;
+        public City City { get; set; }
 
         [Required(ErrorMessage = "Количество участников обязательно.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Количество участников должно быть больше 0.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Количество участников должно быть больше 1.")]
         public int ParticipantCount { get; set; }
+    }
+
+    public enum City
+    {
+        Харків,
+        Київ,
+        Одеса,
+        Львів,
+        Дніпро
     }
 }

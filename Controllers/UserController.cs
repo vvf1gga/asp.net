@@ -11,8 +11,12 @@ namespace Kyrsova.Controllers
     public class UserController : Controller
     {
 
-        [HttpGet]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
         {
             return View();
         }
